@@ -49,10 +49,16 @@ namespace F20ST4PRJ4Gr1TelemedDB.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("HRV")
+                        .HasColumnType("int");
+
                     b.Property<int>("MeasurementNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("PatientMeasurementId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Pulse")
                         .HasColumnType("int");
 
                     b.HasKey("ECGMeasurementId");
@@ -75,23 +81,11 @@ namespace F20ST4PRJ4Gr1TelemedDB.Migrations
                     b.Property<string>("CPRNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("County")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("HRV")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Pulse")
-                        .HasColumnType("int");
 
                     b.HasKey("PatientMeasurementId");
 

@@ -16,8 +16,6 @@ namespace F20ST4PRJ4Gr1SysModel
             Name = name;
             Address = address;
             Date = DateTime.Now;
-            Pulse = 0;
-            HRV = 0;
 
             for (int i = 1; i < 4; i++)
             {
@@ -29,16 +27,13 @@ namespace F20ST4PRJ4Gr1SysModel
         public string CPRNumber { get; set; } // CPR-nummer tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Name { get; set; } // Navn tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Address { get; set; } // Adresse tilhørende patienten, som indtastes på brugergrænsefladen.
-        public string Country { get; set; }
-        public string County { get; set; }
         public DateTime Date { get; set; } // Autogenereret dato, der passer til tidspunktet dataen flyttes til databasen. 
-        public int Pulse { get; set; } // Patientens puls, som er udregnet ud fra den målte EKG data.
-        public int HRV { get; set; } // Patientens HRV, som er udregnet ud fra den målte EKG data.
         public List<ECGMeasurement> ECGMeasurements { get; } // En liste bestående af objekter af klassen ECGMeasurement.
     }
 
     public class ECGMeasurement // ECGMeasurement klassen sendes i databasen og kobles op med Patientobjektet med følgende: 
     {
+
         public ECGMeasurement()
         {
             ECGLeads = new List<ECGLead>();
@@ -58,6 +53,8 @@ namespace F20ST4PRJ4Gr1SysModel
         public int PatientMeasurementId { get; set; } //Tilknytter ECGMeasurement til den specifikke Patient via PatientId
         public int MeasurementNumber { get; set; } // Et nummer der afgør om det er 1., 2., eller 3. måling
         public List<ECGLead> ECGLeads { get; set; } // En liste bestående af objekter af klassen ECGLead.
+        public int Pulse { get; set; } // Patientens puls, som er udregnet ud fra den målte EKG data.
+        public int HRV { get; set; } // Patientens HRV, som er udregnet ud fra den målte EKG data.
     }
     public class ECGLead // ECGMeasurement klassen sendes i databasen og kobles op med ECGMeasurementobjektet med følgende: 
     {
@@ -71,5 +68,6 @@ namespace F20ST4PRJ4Gr1SysModel
         public int LeadNumber { get; set; } // Et nummer der afgør om det er 1., 2., eller 3. afledning der i dette lead er målt
         public byte[] ECGLeadValues { get; set; } //Byte-array hvor ECG-værdier skal lægges i
     }
+
 
 }

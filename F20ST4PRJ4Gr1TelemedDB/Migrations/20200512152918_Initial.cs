@@ -16,9 +16,7 @@ namespace F20ST4PRJ4Gr1TelemedDB.Migrations
                     CPRNumber = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Pulse = table.Column<int>(nullable: false),
-                    HRV = table.Column<int>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +30,9 @@ namespace F20ST4PRJ4Gr1TelemedDB.Migrations
                     ECGMeasurementId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PatientMeasurementId = table.Column<int>(nullable: false),
-                    MeasurementNumber = table.Column<int>(nullable: false)
+                    MeasurementNumber = table.Column<int>(nullable: false),
+                    Pulse = table.Column<int>(nullable: false),
+                    HRV = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
