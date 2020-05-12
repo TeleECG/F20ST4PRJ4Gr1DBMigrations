@@ -1,0 +1,46 @@
+
+Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.EntityFrameworkCore.SQLServer
+Install-Package Microsoft.EntityFrameworkCore.SQLite
+
+//Med F20TeleMedDB som startup
+Add-Migration Intial
+//Flytte Migration Folder til TeleMedDBMigration
+//Med F20LocalDB som startup
+Add-Migration Intial
+//Flytte Migration Folder til LocDBMigration
+
+//Tilføj Country //1 og County//2 til PatientMeasurement
+//Med TeleMedDBMigration som startup
+Add-Migration PatientCountry -project TeleMedDBMigration //1
+Add-Migration PatientCounty -project TeleMedDBMigration //2
+//Med LocDBMigration som startup
+Add-Migration PatientCountry -project TeleMedDBMigration //""
+Add-Migration PatientCounty -project TeleMedDBMigration //2
+
+
+
+
+Med LocDBMigration som startup
+Add-Migration PatientCounty -project LocDBMigration
+Med TeleMedDBMigration som startup
+
+
+
+
+Add-Migration Initial-Create //Setup Database code
+Update-Database //Create database 
+
+Scaffold-DbContext 'Data Source=st-i4dab.uni.au.dk;Initial Catalog=F19ST2PRJ2OffEKGDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' Microsoft.EntityFrameworkCore.SqlServer
+
+Links
+Reverse Engineering SQL DB (Scaffolding eller CodeFirst-Existing Database)
+
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding
+Tools
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell
+
+SQLite Tool VS2019
+https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox
